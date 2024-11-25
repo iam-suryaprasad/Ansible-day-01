@@ -9,7 +9,7 @@ data "aws_route_table" "ansible_vpc_rt" {
 }
 
 resource "aws_vpc_peering_connection" "ansible-vpc-peering" {
-  peer_vpc_id = data.aws_vpc.ansible_vpc.id
+  peer_vpc_id = data.aws_vpc.ami-vpc.id
   vpc_id      = aws_vpc.default.id
   auto_accept = true
   accepter {
