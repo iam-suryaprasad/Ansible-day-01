@@ -15,17 +15,25 @@
       3135
 
   tasks:
-    # Install pip3 on remote servers
-    - name: Install pip3 on remote servers
+    # Install python3-venv to support virtual environments
+    - name: Install python3-venv on remote servers
       ansible.builtin.package:
-        name: python3-pip
+        name: python3-venv
         state: present
       become: yes
 
-    # Install passlib using pip on remote servers
-    - name: Install passlib using pip on remote servers
+    # Create a virtual environment
+    - name: Create virtual environment for passlib
+      ansible.builtin.shell:
+        cmd: python3 -m venv /root/passlib_venv
+        creates: /root/passlib_venv
+      become: yes
+
+    # Install passlib in the virtual environment
+    - name: Install passlib in virtual environment
       ansible.builtin.pip:
         name: passlib
+        virtualenv: /root/passlib_venv
         state: present
       become: yes
 
