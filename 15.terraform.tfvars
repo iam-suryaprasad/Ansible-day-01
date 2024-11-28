@@ -7,9 +7,9 @@ private_subnet_cidrs = ["10.37.10.0/24", "10.37.20.0/24", "10.37.30.0/24"] #List
 azs                  = ["us-east-1a", "us-east-1b", "us-east-1c"]          #List
 environment          = "production"
 instance_type = {
-  development = "t2.micro"
-  testing     = "t2.micro"
-  production  = "t2.micro"
+  development = "t2.medium"
+  testing     = "t2.medium"
+  production  = "t2.medium"
 }
 amis = {
   us-east-1 = "ami-0149b2da6ceec4bb0" # Canonical, Ubuntu, 20.04 LTS, amd64 focal image
