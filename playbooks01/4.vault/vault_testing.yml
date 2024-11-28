@@ -15,13 +15,11 @@
       3135
 
   tasks:
-    - name: Install passlib on remote servers
-      apt:
-        name: python3-passlib
+    - name: Install passlib using pip on remote servers
+      ansible.builtin.pip:
+        name: passlib
         state: present
       become: yes
-      when: ansible_facts.packages['python3-passlib'] is not defined
-      # Use the appropriate package manager for different OSes. Example above is for Ubuntu/Debian-based systems.
 
     - name: Create .aws folder
       shell: mkdir -p /root/.aws
