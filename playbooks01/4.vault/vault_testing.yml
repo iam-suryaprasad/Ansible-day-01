@@ -15,6 +15,14 @@
       3135
 
   tasks:
+    # Install pip3 on remote servers
+    - name: Install pip3 on remote servers
+      ansible.builtin.package:
+        name: python3-pip
+        state: present
+      become: yes
+
+    # Install passlib using pip on remote servers
     - name: Install passlib using pip on remote servers
       ansible.builtin.pip:
         name: passlib
